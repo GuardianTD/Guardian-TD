@@ -20,4 +20,12 @@ public class Leaderboards : MonoBehaviour
     {
         SceneManager.LoadScene("PlayMenu");
     }
+    public void SinglePlayerLeaderboard()
+    {
+        SceneManager.LoadScene("SinglePlayerLeaderboard");
+    }
+    public void MultiPlayerLeaderboard()
+    {
+        SceneManager.LoadScene("MultiPlayerLeaderboard");
+    }
 }
