@@ -23,12 +23,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PlayMenu/Leaderboards/SinglePlayerLeaderboard.unity
     guid: 95f03601924d0be43ad51b9c2d19926d
-  - enabled: 1
-    path: Assets/Scenes/PlayMenu/Leaderboards/MultiPlayerLeaderboard.unity
-    guid: 449af6d059876304e9a22d0de1f7d028
-  - enabled: 1
-    path: Assets/Scenes/LoginMenu.unity
-    guid: 7099b19d93c9e9c4ea270878a150d8d0
   m_configObjects:
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: 744b813df90924c169af73489b8325de,
       type: 2}
