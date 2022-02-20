@@ -12,13 +12,26 @@ using SimpleJSON;
 
 public class Login : MonoBehaviour
 {
-    
-    public TMP_InputField EmailID;//the inputfield for entering the emailid
-    public TMP_InputField Password;// the inputfield for entering the password
-    public TMP_Text ErrorMessage;// the text area for sending the erroe messages
-    public string uri = "https://guardiantd.azurewebsites.net/api/User";// the url to make the get and post calls
-    public APIHandler apiHandler = new APIHandler();// instance of the APIHandler class
-    
+    /// <summary>
+    /// the inputfield for entering the emailid
+    /// </summary>
+    public TMP_InputField EmailID;
+    /// <summary>
+    /// the inputfield for entering the password
+    /// </summary>
+    public TMP_InputField Password;
+    /// <summary>
+    /// the text area for sending the erroe messages
+    /// </summary>
+    public TMP_Text ErrorMessage;
+    /// <summary>
+    ///  instance of the APIHandler class
+    /// </summary>
+    public APIHandler apiHandler = new APIHandler();
+    /// <summary>
+    /// to access userID
+    /// </summary>
+    public static string userID;
     
     /// <summary>
     /// checks if the email is valid
@@ -84,12 +97,13 @@ public class Login : MonoBehaviour
     public void LoginButton ()
     {
         string[] credentials = apiHandler.GetLoginCredentials(EmailID.text, Password.text);
-        apiHandler.Get(uri);
+        apiHandler.Get();
         JSONNode result = apiHandler.result;
         for(int i = 0; i < result[i]["user_id"]; i++)
         {
             if((result[i]["email"] == credentials[0]) && (result[i]["password"] == credentials[1]))
             {
+                userID = result[i]["user_id"].ToString();
                 SceneManager.LoadScene("HomeMenu");
             }
             else
@@ -110,9 +124,10 @@ public class Login : MonoBehaviour
         if(isEmailValid == true && isPasswordValid == "Success")
         {
             string information = "{\r\n        \"FirstName\": \" \",\r\n        \"LastName\": \" \",\r\n        \"Email\": \"" + credentials[0].ToString() + "\",\r\n        \"Password\": \"" + credentials[1].ToString() + "\"\r\n}";
-            apiHandler.Post(uri, information, "Application/JSON");
-            if(apiHandler.result == "User Added Successfully")
+            apiHandler.Post(information, "Application/JSON");
+            if(apiHandler.result["message"] == "User Added Successfully")
             {
+                userID = apiHandler.result["userid"].ToString();
                 SceneManager.LoadScene("HomeMenu");
             }
             else

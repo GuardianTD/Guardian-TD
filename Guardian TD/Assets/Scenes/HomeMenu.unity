@@ -546,7 +546,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bc0ee6bf9ac5694db0b99d2c0f913ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loginDetails: {fileID: 0}
   PlayerIcon: {fileID: 1132963910}
   PlayerName: {fileID: 1150640916}
 --- !u!1 &388525029
