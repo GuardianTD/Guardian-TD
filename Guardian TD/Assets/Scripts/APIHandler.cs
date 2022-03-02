@@ -5,7 +5,7 @@ using SimpleJSON;
 using UnityEngine.Networking;
 using System.Net;
 using System.IO;
-using Newtonsoft.Json;
+
 using System.Text;
 
 public class APIHandler
