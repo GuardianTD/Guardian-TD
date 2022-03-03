@@ -5,17 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class Achievements : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    /// <summary>
+    /// to go back to the previous scene
+    /// </summary>
     public void BackButton()
     {
         SceneManager.LoadScene("HomeMenu");
