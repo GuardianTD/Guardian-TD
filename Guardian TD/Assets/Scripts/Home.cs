@@ -9,6 +9,8 @@ using TMPro;
 using SimpleJSON;
 
 
+
+
 public class Home : MonoBehaviour
 {
     /// <summary>
@@ -22,18 +24,21 @@ public class Home : MonoBehaviour
     /// <summary>
     /// instance of APIHandler class
     /// </summary>
-    public APIHandler apiHandler = new APIHandler();
+    private APIHandler apiHandler = new APIHandler();
+    /// <summary>
+    /// the url to make the get and post calls
+    /// </summary>
+    private string uri = "https://guardiantdapi.azurewebsites.net/api/User";
     /// <summary>
     /// gets the player information and uses that info in PlayerIcon and PlayerName
     /// </summary>
     void Start()
     {
-        apiHandler.GetByID(Login.userID);
+        apiHandler.GetByID(Login.userID, uri);
         JSONNode PlayerInfo = apiHandler.result;
-        Debug.Log(apiHandler.result[0]["email"]);
-        PlayerIcon.text = PlayerInfo[0]["email"].ToString().Replace("\"", "").Substring(0, 1);
-        int index = PlayerInfo[0]["email"].ToString().Replace("\"", "").LastIndexOf("@");
-        PlayerName.text = PlayerInfo[0]["email"].ToString().Replace("\"", "").Substring(0, index);
+        Debug.Log(apiHandler.result[0]["user_name"]);
+        PlayerIcon.text = PlayerInfo[0]["user_name"].ToString().Replace("\"", "").Substring(0, 1);
+        PlayerName.text = PlayerInfo[0]["user_name"].ToString().Replace("\"", "");
     }
     /// <summary>
     /// Changes the Scene to PlayMenu
