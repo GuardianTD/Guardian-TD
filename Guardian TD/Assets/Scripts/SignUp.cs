@@ -128,6 +128,9 @@ public class SignUp : MonoBehaviour
             }
         }
     }
+    /// <summary>
+    /// to move back to login page
+    /// </summary>
     public void LoginButton()
     {
         SceneManager.LoadScene("LoginMenu");

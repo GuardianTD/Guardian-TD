@@ -12,23 +12,58 @@ using SimpleJSON;
 
 public class ShopMenu : MonoBehaviour
 {
+    /// <summary>
+    /// Game objects buttons
+    /// </summary>
     public Button TowersShop;
     public Button PowerUpsShop;
+    /// <summary>
+    /// to check which shop is open towers or powerups
+    /// </summary>
     private string ActiveShop = "Towers";
+    /// <summary>
+    /// the primary color of buttons
+    /// </summary>
     public Color Green;
+    /// <summary>
+    /// game objects to edit which shop is open
+    /// </summary>
     private GameObject TowerText;
     private GameObject PowerUpsText;
-    private bool isDisplayed = false;
+    /// <summary>
+    /// instance of api handler class
+    /// </summary>
     private APIHandler apiHandler = new APIHandler();
+    /// <summary>
+    /// URLs for api calls
+    /// </summary>
     private string towerURI = "https://guardiantdapi.azurewebsites.net/api/Tower";
     private string userTowerURI = "https://guardiantdapi.azurewebsites.net/api/UserTower";
+    /// <summary>
+    /// JSONNodes for storing the result of api calls
+    /// </summary>
     private JSONNode TowerInfo;
     private JSONNode TowerByIdInfo;
     private JSONNode UserTowerInfo;
+    /// <summary>
+    /// for assigning font to game objects
+    /// </summary>
     private TMP_FontAsset font;
+    /// <summary>
+    /// to keep track of which item is displayed
+    /// </summary>
     private int CurrentId = 1;
+    /// <summary>
+    /// to keep track of which item was previously displayed
+    /// </summary>
     private int PreviousId;
+    /// <summary>
+    /// total no. items registered in database
+    /// </summary>
     private int TotalItems;
+    /// <summary>
+    /// Game objects to edit the buttons or text in the ui
+    /// </summary>
     public GameObject Items;
     public GameObject Next;
     public GameObject Previous;
@@ -42,6 +77,9 @@ public class ShopMenu : MonoBehaviour
         TowerText = TowersShop.transform.GetChild(0).gameObject;
         PowerUpsText = PowerUpsShop.transform.GetChild(0).gameObject;
     }
+    /// <summary>
+    /// Update function to keep updating the game objects while on this scene
+    /// </summary>
     void Update()
     {
         if(PreviousId != CurrentId)
@@ -112,12 +150,19 @@ public class ShopMenu : MonoBehaviour
         }
         //apiHandler.GetByID(Login.userID, uri);
     }
+    /// <summary>
+    /// to change the shop menu on click
+    /// </summary>
+    /// <param name="ShopMenu">which shop menu to open</param>
     public void ChangeShopMenu(string ShopMenu)
     {
         ActiveShop = ShopMenu;
         CurrentId = 1;
         PreviousId = 0;
     }
+    /// <summary>
+    /// to move to next item
+    /// </summary>
     public void NextButton()
     {
         if(TotalItems > CurrentId)
@@ -126,6 +171,9 @@ public class ShopMenu : MonoBehaviour
             CurrentId++;
         }
     }
+    /// <summary>
+    /// to move to previous item
+    /// </summary>
     public void PreviousButton()
     {
         if (CurrentId > 1)

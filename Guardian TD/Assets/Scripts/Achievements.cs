@@ -10,16 +10,31 @@ using SimpleJSON;
 
 public class Achievements : MonoBehaviour
 {
+    /// <summary>
+    /// URLs for API calls
+    /// </summary>
     private string UserAchievementsURI = "https://guardiantdapi.azurewebsites.net/api/UserAchievements/User";
     private string UserDataURI = "https://guardiantdapi.azurewebsites.net/api/UserAchievements/All/User";
     private string AllAchievementsURI = "https://guardiantdapi.azurewebsites.net/api/Achievements";
     private string ChangeAchievementStatus = "https://guardiantdapi.azurewebsites.net/api/UserAchievements";
+    /// <summary>
+    /// instance of api handler class
+    /// </summary>
     private APIHandler apiHandler = new APIHandler();
+    /// <summary>
+    /// JSONNode objects to store the result of api calls
+    /// </summary>
     private JSONNode UserAchievements;
     private JSONNode UserData;
     private JSONNode AllAchievements;
+    /// <summary>
+    /// Game object to make changes to Game objects
+    /// </summary>
     public GameObject Panel;
     public TMP_FontAsset font;
+    /// <summary>
+    /// to check if it details are already displayed or not
+    /// </summary>
     private bool IsDisplayed = false;
     /// <summary>
     /// to go back to the previous scene
@@ -28,6 +43,9 @@ public class Achievements : MonoBehaviour
     {
         SceneManager.LoadScene("HomeMenu");
     }
+    /// <summary>
+    /// Update function to keep updating the game objects while on this scene
+    /// </summary>
     void Update()
     {
         apiHandler.GetByID("3", UserAchievementsURI);
@@ -87,6 +105,13 @@ public class Achievements : MonoBehaviour
         }
         
     }
+    /// <summary>
+    /// to update the achievements status
+    /// </summary>
+    /// <param name="i"> index of the api result </param>
+    /// <param name="ClaimText">to edit the game object </param>
+    /// <param name="ClaimButton">to edit the game object</param>
+    /// <param name="Achievements">to edit the game object</param>
     void UpdateAchievementStatus(int i, GameObject ClaimText, GameObject ClaimButton, GameObject Achievements)
     {
         if (UserAchievements[i - 1]["claim_status"] != "claimed")
