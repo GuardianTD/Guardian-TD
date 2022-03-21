@@ -57,8 +57,8 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
-/[Aa]ssets/Classes*
-/[Aa]ssets/Scenes*
-Guardian TD/Assets/Scenes/Achievements.unity
+[Aa]ssets/Classes*
+[Aa]ssets/Scenes*
+# Guardian TD/Assets/Scenes/Achievements.unity
 
 
