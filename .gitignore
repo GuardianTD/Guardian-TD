@@ -59,5 +59,6 @@ sysinfo.txt
 crashlytics-build.properties
 /Assets/Classes*
 /Assets/Scenes*
+Guardian TD/Assets/Scenes/Achievements.unity
 
 
